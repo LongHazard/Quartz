@@ -1,0 +1,43 @@
+server:
+  port: 8993
+
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/test
+#    username: postgres
+#    password: postgres
+#
+#  quartz:
+#    job-store-type: jdbc
+#    jdbc:
+#      initialize-schema: always
+
+# Cấu hình datasource
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test
+    username: postgres
+    password: postgres
+    hibernate:
+      ddl-auto: update
+
+  # Cấu hình Quartz
+
+  quartz:
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: myQuartzScheduler
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+            dataSource: myDS
+            tablePrefix: QRTZ_
+          dataSource:
+            myDS:
+              driverClassName: org.postgresql.Driver
+              URL: jdbc:postgresql://localhost:5432/test
+              user: postgres
+              password: postgres
+              maxConnections: 5
