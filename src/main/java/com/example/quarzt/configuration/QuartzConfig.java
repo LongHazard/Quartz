@@ -36,8 +36,7 @@ public class QuartzConfig {
     SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
 
     Properties properties = new Properties();
-    properties.setProperty("org.quartz.scheduler.instanceName", "MY_INSTANCE_NAME");
-    properties.setProperty("org.quartz.scheduler.instanceId", "INSTANCE_ID_01");
+
     properties.put("org.quartz.jobStore.driverDelegateClass", "org.quartz.impl.jdbcjobstore.PostgreSQLDelegate");
     schedulerFactory.setQuartzProperties(properties);
     schedulerFactory.setDataSource(dataSource);

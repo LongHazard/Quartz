@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.quartz.*;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,8 +17,8 @@ public class QuartzServiceImpl implements QuartzService {
   private final Scheduler scheduler;
   @Override
   public void schedulePrintTimeJob(String cronExpression) throws SchedulerException {
-    String jobName = "printTimeJob";
-    String jobGroup = "printTimeGroup";
+    String jobName = "printTimeGroup: " + new Date().getTime();
+    String jobGroup = "printTimeGroup" + new Date().getTime();
 
     Map<String, String> jobData = new HashMap<>();
     jobData.put("someKey", "someValue");
